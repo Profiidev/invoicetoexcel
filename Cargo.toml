@@ -1,0 +1,9 @@
+[package]
+name = "invoicetoexcel"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.91"
+lopdf = "0.34.0"
+pdf-extract = "0.7.10"
