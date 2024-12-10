@@ -1,4 +1,5 @@
 use anyhow::Error;
+use std::path::Path;
 use pdf_extract::extract_text;
 use rust_xlsxwriter::{cell_range, Format, Formula, Workbook};
 use core::f64;
@@ -6,6 +7,11 @@ use std::fs;
 use regex::Regex;
 
 fn main() -> Result<(), Error> {
+
+    let args: Vec<String> = std::env::args().collect();
+    let path = Path::new(&args[0]);
+    std::env::set_current_dir(path.parent().unwrap())?;
+    
     let pdf_dir = "pdf/";
 
     let pdf_paths: Vec<_> = fs::read_dir(pdf_dir)?
